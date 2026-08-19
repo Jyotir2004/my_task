@@ -13,11 +13,13 @@ from fastapi.security import HTTPBearer
 from fastapi import Depends
 from router_main import route
 from function import calc_fibonacci, calc_factorial,add
+from middle import MYMiddleware
 
 
 app= FastAPI()
 security=HTTPBearer()
 app.include_router(route)
+app.add_middleware(MYMiddleware)
 
 def load_data():
     with open ("patient.json","r") as f:
