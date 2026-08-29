@@ -20,11 +20,18 @@ from fastapi import Cookie, WebSocket, WebSocketException
 from fastapi import status
 from fastapi import FastAPI, WebSocket
 from fastapi.responses import HTMLResponse
+from fastapi.middleware.cors import CORSMiddleware
 
 app= FastAPI()
 security=HTTPBearer()
 app.include_router(route)
 app.add_middleware(MYMiddleware)
+app.add_middleware(CORSMiddleware,
+allow_origins=["*"],
+allow_credentials=True,
+allow_methods=["*"],
+allow_headers=["*"],                   
+)
 
 def load_data():
     with open ("patient.json","r") as f:
@@ -39,7 +46,7 @@ def save_data(data):
 class Patient(BaseModel):
     id: Annotated[str,Field(...,description="the id of patient")]
     age: Annotated[int,Field(...,gt=0,lt=120,description="age of the patient")]
-    height: Annotated[int, Field(...,gt=0,lt=150)]
+    height: Annotated[int, Field(...,gt=0,lt=150,description="height of patient")]
     gender: Annotated[Literal["male","female"],Field("gender of patient")]
     phone: Annotated[int,Field(...,max_length=12,min_length=10,description="number of patient")]
     url:AnyUrl
