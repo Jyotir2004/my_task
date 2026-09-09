@@ -1,106 +1,134 @@
-[
-  {
-    "patient_id": "P001",
-    "patient_name": "Rahul Sharma",
+{
+  "P001": {
+    "name": "Rahul Sharma",
     "age": 32,
     "gender": "Male",
-    "phone": "+91-9876543210",
+    "phone": "+91-9000000001",
     "email": "rahul.sharma@example.com",
+    "blood_group": "O+",
+    "state": "Uttar Pradesh",
+    "city": "Noida",
     "problem": "Fever and headache",
-    "doctor": "Dr. Ananya Mehta",
-    "appointment_date": "2026-08-19",
-    "time_slot": "10:00",
-    "status": "Booked"
+    "medical_history": []
   },
-  {
-    "patient_id": "P002",
-    "patient_name": "Priya Verma",
-    "age": 28,
+  "P002": {
+    "name": "Priya Verma",
+    "age": 27,
     "gender": "Female",
-    "phone": "+91-9812345678",
+    "phone": "+91-9000000002",
     "email": "priya.verma@example.com",
-    "problem": "Stomach pain",
-    "doctor": "Dr. Rohan Gupta",
-    "appointment_date": "2026-08-19",
-    "time_slot": "11:30",
-    "status": "Booked"
+    "blood_group": "A+",
+    "state": "Delhi",
+    "city": "New Delhi",
+    "problem": "Migraine",
+    "medical_history": [
+      "Migraine"
+    ]
   },
-  {
-    "patient_id": "P003",
-    "patient_name": "Amit Kumar",
+  "P003": {
+    "name": "Amit Kumar",
     "age": 45,
     "gender": "Male",
-    "phone": "+91-9988776655",
+    "phone": "+91-9000000003",
     "email": "amit.kumar@example.com",
-    "problem": "Back pain",
-    "doctor": "Dr. Neha Kapoor",
-    "appointment_date": "2026-08-20",
-    "time_slot": "14:00",
-    "status": "Booked"
+    "blood_group": "B+",
+    "state": "Uttar Pradesh",
+    "city": "Ghaziabad",
+    "problem": "Diabetes follow-up",
+    "medical_history": [
+      "Type 2 Diabetes"
+    ]
   },
-  {
-    "patient_id": "P004",
-    "patient_name": "Sneha Singh",
+  "P004": {
+    "name": "Sneha Singh",
     "age": 36,
     "gender": "Female",
-    "phone": "+91-9123456789",
+    "phone": "+91-9000000004",
     "email": "sneha.singh@example.com",
-    "problem": "Cough and cold",
-    "doctor": "Dr. Ananya Mehta",
-    "appointment_date": "2026-08-20",
-    "time_slot": "15:30",
-    "status": "Booked"
+    "blood_group": "AB+",
+    "state": "Uttar Pradesh",
+    "city": "Lucknow",
+    "problem": "Back pain",
+    "medical_history": []
   },
-  {
-    "patient_id": "P005",
-    "patient_name": "Vikash Yadav",
+  "P005": {
+    "name": "Vikash Gupta",
     "age": 51,
     "gender": "Male",
-    "phone": "+91-9090909090",
-    "email": "vikash.yadav@example.com",
-    "problem": "Joint pain",
-    "doctor": "Dr. Neha Kapoor",
-    "appointment_date": "2026-08-21",
-    "time_slot": "09:30",
-    "status": "Booked"
+    "phone": "+91-9000000005",
+    "email": "vikash.gupta@example.com",
+    "blood_group": "O-",
+    "state": "Haryana",
+    "city": "Gurugram",
+    "problem": "High blood pressure",
+    "medical_history": [
+      "Hypertension"
+    ]
   },
-  {
-    "patient_id": "P006",
-    "patient_name": "Neha Agarwal",
+  "P006": {
+    "name": "Anjali Mehta",
+    "age": 29,
+    "gender": "Female",
+    "phone": "+91-9000000006",
+    "email": "anjali.mehta@example.com",
+    "blood_group": "A-",
+    "state": "Rajasthan",
+    "city": "Jaipur",
+    "problem": "Stomach pain",
+    "medical_history": []
+  },
+  "P007": {
+    "name": "Rohit Mishra",
+    "age": 40,
+    "gender": "Male",
+    "phone": "+91-9000000007",
+    "email": "rohit.mishra@example.com",
+    "blood_group": "B-",
+    "state": "Madhya Pradesh",
+    "city": "Bhopal",
+    "problem": "Chest discomfort",
+    "medical_history": [
+      "High Cholesterol"
+    ]
+  },
+  "P008": {
+    "name": "Neha Agarwal",
     "age": 24,
     "gender": "Female",
-    "phone": "+91-9345678901",
+    "phone": "+91-9000000008",
     "email": "neha.agarwal@example.com",
-    "problem": "Skin allergy",
-    "doctor": "Dr. Rohan Gupta",
-    "appointment_date": "2026-08-21",
-    "time_slot": "12:00",
-    "status": "Booked"
+    "blood_group": "O+",
+    "state": "Uttar Pradesh",
+    "city": "Noida",
+    "problem": "Cold and cough",
+    "medical_history": []
   },
-  {
-    "patient_id": "P007",
-    "patient_name": "Arjun Malhotra",
-    "age": 39,
+  "P009": {
+    "name": "Suresh Yadav",
+    "age": 58,
     "gender": "Male",
-    "phone": "+91-8765432109",
-    "email": "arjun.malhotra@example.com",
-    "problem": "Chest discomfort",
-    "doctor": "Dr. Ananya Mehta",
-    "appointment_date": "2026-08-22",
-    "time_slot": "10:30",
-    "status": "Booked"
+    "phone": "+91-9000000009",
+    "email": "suresh.yadav@example.com",
+    "blood_group": "A+",
+    "state": "Uttar Pradesh",
+    "city": "Kanpur",
+    "problem": "Joint pain",
+    "medical_history": [
+      "Arthritis"
+    ]
   },
-  {
-    "patient_id": "P008",
-    "patient_name": "Kavita Joshi",
-    "age": 42,
+  "P010": {
+    "name": "Kavita Joshi",
+    "age": 43,
     "gender": "Female",
-    "phone": "+91-8899776655",
+    "phone": "+91-9000000010",
     "email": "kavita.joshi@example.com",
-    "problem": "Migraine",
-    "doctor": "Dr. Neha Kapoor",
-    "appointment_date": "2026-08-22",
-    "time_slot": "16:00",
-    "status": "Booked"
+    "blood_group": "B+",
+    "state": "Uttarakhand",
+    "city": "Dehradun",
+    "problem": "Thyroid follow-up",
+    "medical_history": [
+      "Hypothyroidism"
+    ]
   }
-]
+}

@@ -42,6 +42,17 @@ def save_data(data):
         return json.dump(data,f)
 
 
+def normalize_patient_id(patient_id: str) -> str:
+    return patient_id.strip().upper()
+
+
+def find_patient_record(data: dict, patient_id: str):
+    normalized = normalize_patient_id(patient_id)
+    for key, value in data.items():
+        if normalize_patient_id(key) == normalized:
+            return key, value
+    return None, None
+
 
 class Patient(BaseModel):
     id: Annotated[str,Field(...,description="the id of patient")]
@@ -96,11 +107,12 @@ def view():
     return data
 
 @app.get("/view/{patient_id}")
-def get_patient(patient_id:str=Path(...,description="get a particular patient_id",example="PAT1002")):
-    data=load_data()
-    if patient_id in data:
-        return data[patient_id]
-    raise HTTPException(status_code=200, detail="patient not found")
+def view(patient_id:str=Path(...,description="the id of patient",example="P001")):
+         data=load_data()
+         if patient_id in data:
+             return data[patient_id]
+         
+    
 
 @app.get("/sort")
 def sort(sort_by:str=Query(...,description="sort by height, weight and bmi"),order_by:str=Query(...,description="order by aesc and desc")):
@@ -126,33 +138,30 @@ def create_new(patient:Patient):
 
 @app.put("/update")
 def update_patient(update:change_data,patient_id:str=Path(...,description="updating existing patient")):
-    data=load_data()
-    if patient_id not in data:
-        return HTTPException(status_code=404,detail="patient not found")
-    else:
-        return data[patient_id]
-    existing_user=data[patient_id]
-    updated_patient=update.model_dump(exclude=["id"])
-    for key,value in updated_patient.items():
-        existing_user[key]=value
-    existing_user[id]=patient_id
-    updated_new_patient_object=Patient(**existing_user)
-    existing_user=updated_new_patient_object.model_dump(exclude=["id"])
-    data[patient_id]=existing_user
+    data = load_data()
+    key, existing_user = find_patient_record(data, patient_id)
+    if key is None:
+        raise HTTPException(status_code=404, detail=f"patient '{patient_id}' not found")
+
+    updated_patient = update.model_dump(exclude=["id"])
+    for key_name, value in updated_patient.items():
+        existing_user[key_name] = value
+    existing_user["id"] = key
+    updated_new_patient_object = Patient(**existing_user)
+    existing_user = updated_new_patient_object.model_dump(exclude=["id"])
+    data[key] = existing_user
     save_data(data)
-    return JSONResponse(status_code=200,content="patient updated successfully")
+    return JSONResponse(status_code=200, content="patient updated successfully")
 
 @app.delete("/delete")
 def delete_patient(patient_id:str=Path(...,description="patient_id that need to be deleted")):
-    data=load_data()
-    if patient_id not in data:
-        return HTTPException(status_code=404,detail="patient not found")
-    else:
-        return data[patient_id]
-    wrong_patient=data[patient_id]
-    del wrong_patient
+    data = load_data()
+    key, _ = find_patient_record(data, patient_id)
+    if key is None:
+        raise HTTPException(status_code=404, detail=f"patient '{patient_id}' not found")
+    del data[key]
     save_data(data)
-    return JSONResponse(status_code=200,content="patient deleted successfully")
+    return JSONResponse(status_code=200, content="patient deleted successfully")
 
 @app.post("/login")
 def login(username:str=Form(...),password:str=Form(...)):

@@ -4,7 +4,7 @@ import asyncio
 from fastapi import HTTPException
 import time
 from fastapi.responses import JSONResponse
-from fastapi import headers
+from fastapi import Header
 
 class MYMiddleware(BaseHTTPMiddleware):
     async def dispatch(self,request:Request,call_next):
